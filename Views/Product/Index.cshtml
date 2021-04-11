@@ -5,7 +5,7 @@
 {
     if (Model.Buildings != null)
     {
-        <div class="container">
+        @*<div class="container">
             <div class="row product-container">
                 <div class="col-12">
                     <div class="header-product"><h3>Building List</h3></div>
@@ -40,7 +40,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     }
 
@@ -53,27 +53,37 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th scope="col">Battery Id</th>
                                 <th scope="col">Type Building</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Date Commissioning</th>
                                 <th scope="col">Date Last Inspection</th>
                                 <th scope="col">Information</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Building Id</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in @Model.Batteries)
                             {
-                                <tr>
-                                    <td scope="row">@item.TypeBuilding</td>
-                                    <td scope="row">@item.Status</td>
-                                    <td scope="row">@item.DateCommissioning</td>
-                                    <td scope="row">@item.DateLastInspection</td>
-                                    <td scope="row">@item.Information</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary"><i class="far fa-eye">Create intervention</i></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td scope="row">@item.Id</td>
+                                <td scope="row">@item.TypeBuilding</td>
+                                <td scope="row">@item.Status</td>
+                                <td scope="row">@item.DateCommissioning</td>
+                                <td scope="row">@item.DateLastInspection</td>
+                                <td scope="row">@item.Information</td>
+                                <td scope="row">@item.BuildingId</td>
+                                <td id="loginForm">
+                                    @using (Html.BeginForm("GetInterventions", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                                <input type="submit" value="Create Intervention" class="btn btn-primary" />
+                                    }
+                                </td>
+                                @*<td>
+                                    <button type="button" class="btn btn-primary"><i class="far fa-eye">Create intervention</i></button>
+                                </td>*@
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -93,25 +103,32 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th scope="col">Column Id</th>
                                 <th scope="col">Type Building</th>
                                 <th scope="col">Number Floors Served</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Information</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Battery Id</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in @Model.Columns)
                             {
-                                <tr>
-                                    <td scope="row">@item.TypeBuilding</td>
-                                    <td scope="row">@item.NumberFloorsServed</td>
-                                    <td scope="row">@item.Status</td>
-                                    <td scope="row">@item.Information</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary"><i class="far fa-eye">Create intervention</i></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td scope="row">@item.Id</td>
+                                <td scope="row">@item.TypeBuilding</td>
+                                <td scope="row">@item.NumberFloorsServed</td>
+                                <td scope="row">@item.Status</td>
+                                <td scope="row">@item.Information</td>
+                                <td scope="row">@item.BatteryId</td>
+                                <td id="loginForm">
+                                    @using (Html.BeginForm("GetInterventions", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        <input type="submit" value="Create Intervention" class="btn btn-primary" />
+                                    }
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -130,25 +147,30 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">serialNumber</th>
-                                <th scope="col">model</th>
+                                <th scope="col">Elevator Id</th>
+                                <th scope="col">Serial Number</th>
+                                <th scope="col">Model</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Information</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Column Id</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in @Model.Elevators)
                             {
-                                <tr>
-                                    <td scope="row">@item.SerialNumber</td>
-                                    <td scope="row">@item.Model</td>
-                                    <td scope="row">@item.Status</td>
-                                    <td scope="row">@item.Information</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary"><i class="far fa-eye">Create intervention</i></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td scope="row">@item.Id</td>
+                                <td scope="row">@item.SerialNumber</td>
+                                <td scope="row">@item.Model</td>
+                                <td scope="row">@item.Status</td>
+                                <td scope="row">@item.ColumnId</td>
+                                <td id="loginForm">
+                                    @using (Html.BeginForm("GetInterventions", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        <input type="submit" value="Create Intervention" class="btn btn-primary" />
+                                    }
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
