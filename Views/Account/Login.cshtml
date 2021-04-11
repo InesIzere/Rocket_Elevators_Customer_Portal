@@ -1,7 +1,7 @@
 ﻿@using rocket_elevator_ui.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "To Login";
+    ViewBag.Title = "Login";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -12,7 +12,7 @@
             {
                 @Html.AntiForgeryToken()
                 <h4>
-                    Use a local account to log in.
+                    Use a local account to Login.
                 </h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="To log in" class="btn btn-default" />
+                        <input type="submit" value="Login" class="btn btn-default" />
                     </div>
                 </div>
                 <p>
@@ -51,11 +51,6 @@
                         @Html.ActionLink("Vous avez oublié votre mot de passe ?", "ForgotPassword")
                     </p>*@
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

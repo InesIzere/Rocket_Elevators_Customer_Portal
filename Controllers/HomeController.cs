@@ -17,7 +17,7 @@ namespace rocket_elevator_ui.Controllers
     public class HomeController : Controller
     {
         private static readonly HttpClient client = new HttpClient();
-        private string url = "https://rocketapiem.herokuapp.com";
+        private string url = "https://localhost:5001";
         public ActionResult Index()
         {
             return View();
