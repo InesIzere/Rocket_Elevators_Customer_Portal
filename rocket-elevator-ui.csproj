@@ -326,7 +326,6 @@
     <Content Include="Views\Home\_PartialSelectBatteries.cshtml" />
     <Content Include="Views\Home\_PartialSelectColumn.cshtml" />
     <Content Include="Views\Home\_PartialSelectElevators.cshtml" />
-    <Content Include="Views\Home\ProductModel.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Account\CustomerSettings.cshtml" />
     <Content Include="Views\Account\SuccessMessage.cshtml" />
@@ -334,7 +333,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
