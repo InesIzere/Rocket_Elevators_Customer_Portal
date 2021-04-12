@@ -216,11 +216,6 @@ namespace rocket_elevator_ui.Controllers
             var httpClient = new HttpClient();
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 
-            //A appeller avec la function GetAddress(string email)
-            //var email = User.Identity.GetUserName();
-            //var path1 = $"{url}/Customers/{email}";
-            //var customer = await GetCustomerAsync(path1);
-            //GetAddress(customer.AddressId)
 
 
 
@@ -231,13 +226,7 @@ namespace rocket_elevator_ui.Controllers
                 var addres = JsonConvert.DeserializeObject<List<Addresses>>(result);
             }
             var model = new ProductModel();
-            //if (addres?.Count > 0)
-            //{
-            //    foreach (var element in addres)
-            //    {
-            //        model.Addresses.Add(new SelectListItem { Text = element.Id.ToString(), Value = element.Id.ToString() });
-            //    }
-            //}
+         
             return View("ProductModel", model);
 
 
