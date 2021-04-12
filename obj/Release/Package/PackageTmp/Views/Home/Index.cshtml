@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Home Page";
+    string email = User.Identity.GetUserName();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Rocket Elevator's Management App</h1>
+    
+    
+</div>
+
+@if (!string.IsNullOrEmpty(email)) {
+    <div class="row text-center body-content">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("GetInterventions", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <br />
+                           
+                            <br />
+                        </div>
+                    </div>
+                   
+                }
+            </section>
+        </div>
+       
+    </div>
+}
