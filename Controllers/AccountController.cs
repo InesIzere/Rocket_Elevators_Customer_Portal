@@ -83,16 +83,6 @@ namespace rocket_elevator_ui.Controllers
         public async Task<ActionResult> UpdateCustomer(Customers model)
         {
 
-            //Interventions interv = new Interventions
-            //{
-            //    Reports = model.Reports,
-            //    Author = model.Author,
-            //    CustomerId = model.CustomerId,
-            //    BuildingId = long.Parse(model.BuildingId),
-            //    BatteryId = long.Parse(model.BatteryId),
-            //    ColumnId = long.Parse(model.ColumnId),
-            //    ElevatorId = long.Parse(model.ElevatorId)
-            //};
             var httpClient = new HttpClient();
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 
@@ -118,8 +108,7 @@ namespace rocket_elevator_ui.Controllers
                 return View(model);
             }
 
-            // Ceci ne comptabilise pas les échecs de connexion pour le verrouillage du compte
-            // Pour que les échecs de mot de passe déclenchent le verrouillage du compte, utilisez shouldLockout: true
+            
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -161,10 +150,6 @@ namespace rocket_elevator_ui.Controllers
                 return View(model);
             }
 
-            // Le code suivant protège des attaques par force brute contre les codes à 2 facteurs. 
-            // Si un utilisateur entre des codes incorrects pendant un certain intervalle, le compte de cet utilisateur 
-            // est alors verrouillé pendant une durée spécifiée. 
-            // Vous pouvez configurer les paramètres de verrouillage du compte dans IdentityConfig
             var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
@@ -187,44 +172,7 @@ namespace rocket_elevator_ui.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Register
-        ////[HttpPost]
-        ////[AllowAnonymous]
-        ////[ValidateAntiForgeryToken]
-
-        ////public async Task<ActionResult> Register(RegisterViewModel model)
-        ////    // call the api
-        ////    // response.status code is ok
-        ////    // dans le 
-        ////{
-        ////    if (ModelState.IsValid  )
-        ////    {
-        ////        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-        ////        bool existeDansAPI = false;
-
-
-
-        ////        var result = await UserManager.CreateAsync(user, model.Password);
-        ////        if (result.Succeeded)
-        ////        {
-        ////            await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-        ////            // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
-        ////            // Envoyer un message électronique avec ce lien
-        ////            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        ////            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        ////            // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
-
-        ////            return RedirectToAction("Index", "Home");
-        ////        }
-        ////        AddErrors(result);
-        ////    }
-
-        ////    // Si nous sommes arrivés là, un échec s’est produit. Réafficher le formulaire
-        ////    return View(model);
-        ////}
-
+       
         private async Task<Customers> GetCustomerAsync(string path)
         {
             Customers customer = null;
@@ -263,11 +211,7 @@ namespace rocket_elevator_ui.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href="" + callbackUrl + "">here</a>");
+                  
 
                     return RedirectToAction("Index", "Home");
                 }
