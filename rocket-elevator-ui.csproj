@@ -276,6 +276,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\codeboxx - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\rocketcustomerit - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

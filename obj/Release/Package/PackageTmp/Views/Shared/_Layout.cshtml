@@ -1,0 +1,77 @@
+﻿
+<!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - RocketElevators</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="navbar-header">
+                    <img src="~/Content/Images/R2logo.png" />
+                    @*@Html.ActionLink("Rocket Elevators", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                    <li>@Html.ActionLink("Create intervention", "GetInterventions", "Home")</li>
+                    <li>@Html.ActionLink("Personal Info", "CustomerSettings", "Account")</li>
+                </ul>
+
+
+                @Html.Partial("_LoginPartial")
+
+            </div> }
+                        else
+                        {
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+
+
+                @Html.Partial("_LoginPartial")
+            </div>}
+                
+            </div>
+        </nav>
+            <div class="container body-content">
+                @RenderBody()
+            </div>
+                <hr />
+                <footer class="border-top footer text-muted">
+                    <div class="container">
+
+                        <!-- col #1 -->
+                        <div class="col-md-8">
+
+                            <div class="footer-logo" style="float: left;">
+                                <a class="page-header page-header-xlg parallax parallax-4" href="https://rocketelevatorstjw.com" style="padding-right: 28px;"><img src="~/Content/images/R2logo.png" /></a>
+                            </div>
+                            <div class="container">
+                                &copy; Rocket Elevators, Inc. - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </div>
+
+                        </div>
+                        <!-- /col #1 -->
+
+                    </div>
+
+                </footer>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+</body>
+    </html>

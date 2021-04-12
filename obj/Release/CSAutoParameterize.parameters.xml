@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=students-projects.cq6zrczewpu2.us-east-1.rds.amazonaws.com;Initial Catalog=TimothyWever;Persist Security Info=True;User ID=codeboxx;Password=Codeboxx1!" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\TJWev\\Desktop\\Rocket_Elevators_Customer_Portal\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

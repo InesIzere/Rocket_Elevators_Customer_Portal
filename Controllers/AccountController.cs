@@ -23,7 +23,7 @@ namespace rocket_elevator_ui.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private string url = "https://rocketcustomer.herokuapp.com/";
+        private string url = "https://localhost:5001";
 
         public AccountController()
         {
@@ -187,44 +187,6 @@ namespace rocket_elevator_ui.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Register
-        ////[HttpPost]
-        ////[AllowAnonymous]
-        ////[ValidateAntiForgeryToken]
-
-        ////public async Task<ActionResult> Register(RegisterViewModel model)
-        ////    // call the api
-        ////    // response.status code is ok
-        ////    // dans le 
-        ////{
-        ////    if (ModelState.IsValid  )
-        ////    {
-        ////        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-        ////        bool existeDansAPI = false;
-
-
-
-        ////        var result = await UserManager.CreateAsync(user, model.Password);
-        ////        if (result.Succeeded)
-        ////        {
-        ////            await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-        ////            // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
-        ////            // Envoyer un message électronique avec ce lien
-        ////            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        ////            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        ////            // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
-
-        ////            return RedirectToAction("Index", "Home");
-        ////        }
-        ////        AddErrors(result);
-        ////    }
-
-        ////    // Si nous sommes arrivés là, un échec s’est produit. Réafficher le formulaire
-        ////    return View(model);
-        ////}
-
         private async Task<Customers> GetCustomerAsync(string path)
         {
             Customers customer = null;
@@ -311,19 +273,13 @@ namespace rocket_elevator_ui.Controllers
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    // Ne révélez pas que l'utilisateur n'existe pas ou qu'il n'est pas confirmé
+                    
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
-                // Envoyer un message électronique avec ce lien
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Réinitialiser le mot de passe", "Réinitialisez votre mot de passe en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
-            // Si nous sommes arrivés là, un échec s’est produit. Réafficher le formulaire
+            
             return View(model);
         }
 
@@ -415,7 +371,7 @@ namespace rocket_elevator_ui.Controllers
                 return View();
             }
 
-            // Générer le jeton et l'envoyer
+            
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
                 return View("Error");
@@ -434,7 +390,7 @@ namespace rocket_elevator_ui.Controllers
                 return RedirectToAction("Login");
             }
 
-            // Connecter cet utilisateur à ce fournisseur de connexion externe si l'utilisateur possède déjà une connexion
+            
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
@@ -446,7 +402,7 @@ namespace rocket_elevator_ui.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
-                    // Si l'utilisateur n'a pas de compte, invitez alors celui-ci à créer un compte
+                    
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
@@ -467,7 +423,7 @@ namespace rocket_elevator_ui.Controllers
 
             if (ModelState.IsValid)
             {
-                // Obtenez des informations sur l’utilisateur auprès du fournisseur de connexions externe
+                
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {
