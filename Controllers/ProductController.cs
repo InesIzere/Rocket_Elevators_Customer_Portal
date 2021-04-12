@@ -46,10 +46,7 @@ namespace rocket_elevator_ui.Controllers
                 Batteries = await GetBatteriesAsync($"{url}/Batteries"),
                 Buildings =await loadBuildingsAsync()
             };
-            //loadBuildingsAsync();
-            //loadBatteriesAsync(model);
-            //loadColumnsAsync(model);
-            //loadElevatorsAsync(model);
+           
             return model;
         }
 
@@ -132,22 +129,7 @@ namespace rocket_elevator_ui.Controllers
             if (customer != null)
             {
                 return await GetBuildingsAsync($"{url}/Buildings/{customer.Id}/net");
-                //if (buildings != null)
-                //{
-                //    model.Buildings.AddRange(buildings);
-                //    foreach (var element in buildings)
-                //    {
-                //        //model.Buildings.Add(new SelectListItem { Text = element.AdmContactFullName, Value = element.Id.ToString() });
-                //        model.Buildings.Add(new Buildings {
-                //            Id = element.Id,
-                //            AddressId = element.AddressId,
-                //            Address = element.Address,
-                //            AdmContactEmail = element.AdmContactEmail,
-                //            AdmContactFullName = element.AdmContactFullName,
-                //            AdmContactPhone = element.AdmContactPhone
-                //        });
-                //    }
-                //}
+                
             }
             return null;
 
